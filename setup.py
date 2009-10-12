@@ -8,7 +8,6 @@ setup(name='zeam.form.composed',
       description="Composed form support for zeam.form",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -18,15 +17,15 @@ setup(name='zeam.form.composed',
       author_email='thefunny@gmail.com',
       url='',
       license='BSD',
-      packages=find_packages(exclude=['ez_setup']),
+      package_dir={'': 'src'},
+      packages=find_packages('src'),
       namespace_packages=['zeam', 'zeam.form'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'setuptools',
-          # -*- Extra requirements: -*-
-      ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+        'setuptools',
+        'zeam.form.base',
+        'martian',
+        'grokcore.component',
+        ],
       )
