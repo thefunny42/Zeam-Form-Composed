@@ -1,0 +1,27 @@
+<html>
+  <head>
+  </head>
+  <body>
+      <h1 tal:condition="view/label"
+          tal:content="view/label">Label</h1>
+
+      <p tal:condition="view/description"
+         tal:content="view/description">Description</p>
+
+      <div class="subforms">
+        <div class="subform"
+             tal:repeat="subform view/subforms"
+             tal:content="structure subform/render">
+          Subform
+        </div>
+      </div>
+
+      <div class="actions"
+           tal:condition="view/action_widgets">
+        <div class="action" tal:repeat="widget view/action_widgets">
+          <tal:widget tal:content="structure widget/render" />
+        </div>
+      </div>
+
+  </body>
+</html>

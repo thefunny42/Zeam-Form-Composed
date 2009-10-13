@@ -1,13 +1,18 @@
 
-from zope.interface import implements
+from megrok import pagetemplate as pt
+from grokcore.viewlet.util import sort_components
+from grokcore import component as grok
 from zope import component
 
 from zeam.form.base import form
 from zeam.form.composed import interfaces
 
+pt.templatedir('default_templates')
+
 
 class SubForm(form.FormCanvas):
-    implements(interfaces.ISubForm)
+    grok.baseclass()
+    grok.implements(interfaces.ISubForm)
 
     # Set prefix to None, so it's changed by the grokker
     prefix = None
@@ -21,18 +26,19 @@ class SubForm(form.FormCanvas):
 
 
 class ComposedForm(form.Form):
-    implements(interfaces.IComposedForm)
+    grok.baseclass()
+    grok.implements(interfaces.IComposedForm)
 
     def __init__(self, context, request):
         super(ComposedForm, self).__init__(context, request)
-
+        # retrieve subforms by adaptation
         subforms = map(lambda x: x[1], component.getAdapters(
                 (self.context, self,  self.request), interfaces.ISubForm))
-        # TODO sort forms
-        self.subforms = []
-        for subform in subforms:
-            if subform.available():
-                self.subforms.append(subform)
+        # filter out unavailables ones
+        subforms = filter(lambda x: x.available(), subforms)
+        # sort them
+        sort_components(subforms)
+        self.subforms = subforms
 
     def updateForm(self):
         # Set/run actions for all forms
@@ -42,4 +48,8 @@ class ComposedForm(form.Form):
         self.updateActions()
         # Set widgets for all forms
         for subform in self.subforms:
-            subfrom.updateWidgets()
+            subform.updateWidgets()
+
+
+class ComposedFormTemplate(pt.PageTemplate):
+    pt.view(ComposedForm)

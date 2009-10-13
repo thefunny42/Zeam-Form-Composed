@@ -27,9 +27,9 @@ class SubFormGrokker(martian.ClassGrokker):
 
     def execute(self, factory, config, context, layer, view, name, **kw):
         if not factory.prefix:
-            factory.prefix = name
+            factory.prefix = '%s.%s' % (view.prefix, name)
 
-        adapts = (context, layer, view)
+        adapts = (context, view, layer)
         config.action(
             discriminator=('adapter', adapts, ISubForm, name),
             callable=zope.component.provideAdapter,

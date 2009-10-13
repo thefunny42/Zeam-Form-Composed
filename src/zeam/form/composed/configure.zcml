@@ -6,4 +6,7 @@
   <!-- Grok grokkers -->
   <grok:grok package=".meta" />
 
+  <!-- And template -->
+  <grok:grok package=".form" />
+
 </configure>
