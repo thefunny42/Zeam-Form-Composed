@@ -8,7 +8,7 @@ import martian
 import zope.component
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zeam.form.composed.interfaces import ISubForm
-from zeam.form.composed.forms import SubForm
+from zeam.form.composed.form import SubForm
 
 
 class SubFormGrokker(martian.ClassGrokker):
