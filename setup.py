@@ -32,5 +32,12 @@ setup(name='zeam.form.composed',
         'zope.component',
         'zope.interface',
         'zope.publisher',
+        # Test
+        'zope.securitypolicy',
+        'zope.app.authentication',
+        'zope.app.testing',
+        'zope.app.zcmlfiles',
+        'zope.testing',
+        'zope.testbrowser',
         ],
       )
