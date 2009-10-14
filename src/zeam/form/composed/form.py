@@ -11,6 +11,9 @@ pt.templatedir('default_templates')
 
 
 class SubForm(form.FormCanvas):
+    """Form designed to be included in an another form (a
+    ComposedForm).
+    """
     grok.baseclass()
     grok.implements(interfaces.ISubForm)
 
@@ -25,7 +28,15 @@ class SubForm(form.FormCanvas):
         return True
 
 
+class SubFormTemplate(pt.PageTemplate):
+    """Default template for a SubForm
+    """
+    pt.view(SubForm)
+
+
 class ComposedForm(form.Form):
+    """A form which is composed of other forms (SubForm).
+    """
     grok.baseclass()
     grok.implements(interfaces.IComposedForm)
 
@@ -52,4 +63,6 @@ class ComposedForm(form.Form):
 
 
 class ComposedFormTemplate(pt.PageTemplate):
+    """Default template for a ComposedForm.
+    """
     pt.view(ComposedForm)

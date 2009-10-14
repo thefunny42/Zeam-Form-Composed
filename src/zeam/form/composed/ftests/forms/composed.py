@@ -42,7 +42,7 @@ And we can render the form:
         <div class="subforms">
           <div class="subform"><form action="http://127.0.0.1" method="post"
                                      enctype="multipart/form-data">
-            <h1>Hello Form</h1>
+            <h2>Hello Form</h2>
             <div class="actions">
               <div class="action">
                 <input type="submit" id="form-hello-action-hello"
@@ -53,7 +53,7 @@ And we can render the form:
           </div>
           <div class="subform"><form action="http://127.0.0.1" method="post"
                                      enctype="multipart/form-data">
-            <h1>Bye Bye Form</h1>
+          <h2>Bye Bye Form</h2>
           <div class="actions">
             <div class="action">
                <input type="submit" id="form-byebye-action-bye-bye"

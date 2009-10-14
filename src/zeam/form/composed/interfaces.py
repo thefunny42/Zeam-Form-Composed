@@ -5,7 +5,7 @@ from zeam.form.base.interfaces import IForm, IFormCanvas
 
 
 class ISubForm(IFormCanvas):
-    """A form that can be included in an another form.
+    """A form designed to be included in an another form.
     """
 
     parent = interface.Attribute("Parent form")
