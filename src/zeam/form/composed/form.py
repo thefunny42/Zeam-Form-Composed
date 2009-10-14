@@ -48,8 +48,7 @@ class ComposedForm(form.Form):
         # filter out unavailables ones
         subforms = filter(lambda x: x.available(), subforms)
         # sort them
-        sort_components(subforms)
-        self.subforms = subforms
+        self.subforms = sort_components(subforms)
 
     def updateForm(self):
         # Set/run actions for all forms
