@@ -8,6 +8,16 @@
       <p tal:condition="view/description"
          tal:content="view/description">Description</p>
 
+      <p class="form-error"
+         tal:condition="view/errors">
+        There were errors:
+        <tal:error tal:define="formError view/submissionError"
+                   tal:condition="formError">
+          <br />
+          <span tal:replace="formError/title" />
+        </tal:error>
+      </p>
+
       <div class="subforms">
         <div class="subform"
              tal:repeat="subform view/subforms"
@@ -17,8 +27,8 @@
       </div>
 
       <div class="actions"
-           tal:condition="view/action_widgets">
-        <div class="action" tal:repeat="widget view/action_widgets">
+           tal:condition="view/actionWidgets">
+        <div class="action" tal:repeat="widget view/actionWidgets">
           <tal:widget tal:content="structure widget/render" />
         </div>
       </div>
