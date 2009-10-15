@@ -15,7 +15,7 @@ class SubForm(form.FormCanvas):
     ComposedForm).
     """
     grok.baseclass()
-    grok.implements(interfaces.ISubForm)
+    grok.implements(interfaces.ISimpleSubForm)
 
     # Set prefix to None, so it's changed by the grokker
     prefix = None
