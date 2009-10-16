@@ -8,13 +8,13 @@ import martian
 import zope.component
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zeam.form.composed.interfaces import ISubForm
-from zeam.form.composed.form import SubForm
+from zeam.form.composed.form import SubFormBase
 
 
 class SubFormGrokker(martian.ClassGrokker):
     """Grokker to register sub forms.
     """
-    martian.component(SubForm)
+    martian.component(SubFormBase)
     martian.directive(grokcore.component.context)
     martian.directive(grokcore.view.layer, default=IDefaultBrowserLayer)
     martian.directive(grokcore.viewlet.view)

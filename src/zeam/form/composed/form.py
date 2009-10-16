@@ -10,22 +10,28 @@ from zeam.form.composed import interfaces
 pt.templatedir('default_templates')
 
 
-class SubForm(form.FormCanvas):
-    """Form designed to be included in an another form (a
-    ComposedForm).
+class SubFormBase(object):
+    """Base class to be applied on a FormCanvas to get a subform.
     """
     grok.baseclass()
-    grok.implements(interfaces.ISimpleSubForm)
 
     # Set prefix to None, so it's changed by the grokker
     prefix = None
 
     def __init__(self, context, parent, request):
-        super(SubForm, self).__init__(context, request)
+        super(SubFormBase, self).__init__(context, request)
         self.parent = parent
 
     def available(self):
         return True
+
+
+class SubForm(SubFormBase, form.FormCanvas):
+    """Form designed to be included in an another form (a
+    ComposedForm).
+    """
+    grok.baseclass()
+    grok.implements(interfaces.ISimpleSubForm)
 
 
 class SubFormTemplate(pt.PageTemplate):
