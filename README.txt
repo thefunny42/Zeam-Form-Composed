@@ -2,7 +2,8 @@
 zeam.form.composed
 ==================
 
-This package let define forms containing other subforms.
+This package let you defines forms containing other forms in
+`zeam.form.base`_.
 
 .. contents::
 
@@ -44,7 +45,7 @@ settings::
 
 
 Some default templates are included as well, but you can replace like
-you will do in ``zeam.form.base``.
+you will do in `zeam.form.base`_.
 
 API
 ===
@@ -91,3 +92,5 @@ the `Grok documentation <http://grok.zope.org>`_ for more information.
 ``order``
     Let you specify a number to sort your sub form afterwards using
     that setting.
+
+.. _zeam.form.base: http://pypi.python.org/pypi/zeam.form.base
