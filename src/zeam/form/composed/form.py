@@ -56,6 +56,11 @@ class ComposedForm(form.Form):
         # sort them
         self.subforms = sort_components(subforms)
 
+    def update(self):
+        # Call update for all forms
+        for subform in self.subforms:
+            subform.update()
+
     def updateForm(self):
         # Set/run actions for all forms
         for subform in self.subforms:

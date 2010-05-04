@@ -4,7 +4,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-* ...
+* Call ``update`` for all subforms when the ``update`` of the composed
+  form is called.
 
 1.0 (2010/05/03)
 ----------------
