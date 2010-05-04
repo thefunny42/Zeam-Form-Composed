@@ -3,6 +3,17 @@ import os
 
 version = '1.0.1dev'
 
+tests_require = [
+    'zope.configuration',
+    'zope.app.authentication',
+    'zope.app.testing',
+    'zope.app.zcmlfiles',
+    'zope.securitypolicy',
+    'zope.testbrowser',
+    'zope.testing',
+    ]
+
+
 setup(name='zeam.form.composed',
       version=version,
       description="Composed form support for zeam.form",
@@ -34,12 +45,7 @@ setup(name='zeam.form.composed',
         'zope.component',
         'zope.interface',
         'zope.publisher',
-        # Test
-        'zope.securitypolicy',
-        'zope.app.authentication',
-        'zope.app.testing',
-        'zope.app.zcmlfiles',
-        'zope.testing',
-        'zope.testbrowser',
         ],
+      tests_require = tests_require,
+      extras_require = {'test': tests_require},
       )

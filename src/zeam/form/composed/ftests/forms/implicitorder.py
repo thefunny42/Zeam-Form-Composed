@@ -30,7 +30,7 @@ Our form have subforms, which are in order D, C, B, and A:
 
 """
 
-from zeam.form import composed, base
+from zeam.form import composed
 
 from grokcore import component as grok
 

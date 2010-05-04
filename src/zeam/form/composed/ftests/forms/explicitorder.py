@@ -31,7 +31,7 @@ used the order directive:
 
 """
 
-from zeam.form import composed, base
+from zeam.form import composed
 
 from grokcore import component as grok
 

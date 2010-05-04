@@ -40,28 +40,21 @@ And we can render the form:
     <body>
         <h1>Complex form</h1>
         <div class="subforms">
-          <div class="subform"><form action="http://127.0.0.1" method="post"
-                                     enctype="multipart/form-data">
+          <div class="subform"><form action="http://127.0.0.1" method="post"  enctype="multipart/form-data">
             <h2>Hello Form</h2>
             <div class="actions">
               <div class="action">
-                <input type="submit" id="form-hello-action-hello"
-                       name="form.hello.action.hello" value="Hello" />
+                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" />
               </div>
             </div>
-           </form>
-          </div>
-          <div class="subform"><form action="http://127.0.0.1" method="post"
-                                     enctype="multipart/form-data">
+          </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
           <h2>Bye Bye Form</h2>
           <div class="actions">
             <div class="action">
-               <input type="submit" id="form-byebye-action-bye-bye"
-                      name="form.byebye.action.bye-bye" value="Bye Bye" />
-           </div>
+               <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" />
+            </div>
           </div>
-        </form>
-       </div>
+        </form></div>
       </div>
     </body>
   </html>
