@@ -2,6 +2,8 @@
            xmlns:grok="http://namespaces.zope.org/grok">
 
   <include package="zeam.form.base" />
+  <include package="megrok.chameleon" />
+  <include package="megrok.pagetemplate" file="meta.zcml" />
 
   <!-- Grok grokkers -->
   <grok:grok package=".meta" />
