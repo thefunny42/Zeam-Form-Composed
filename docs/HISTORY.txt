@@ -1,8 +1,10 @@
 Changelog
 =========
 
-1.0.1 (unreleased)
-------------------
+1.1 (2010/07/16)
+----------------
+
+* Default templates now use Chameleon.
 
 * Call ``update`` for all subforms when the ``update`` of the composed
   form is called.
