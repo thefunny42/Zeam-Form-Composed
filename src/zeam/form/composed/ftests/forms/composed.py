@@ -44,14 +44,14 @@ And we can render the form:
             <h2>Hello Form</h2>
             <div class="actions">
               <div class="action">
-                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" />
+                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
               </div>
             </div>
           </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
           <h2>Bye Bye Form</h2>
           <div class="actions">
             <div class="action">
-               <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" />
+               <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
             </div>
           </div>
         </form></div>
