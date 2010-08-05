@@ -59,6 +59,91 @@ And we can render the form:
     </body>
   </html>
 
+We add some errors to the form:
+
+  >>> from zeam.form.base.errors import Error
+  >>> form = component.getMultiAdapter(
+  ...     (context, request), name='complexform')
+
+  >>> form.formErrors
+   
+
+  >>> form.errors.append(Error(u'Something is wrong', identifier=form.prefix))
+  >>> len(form.formErrors)
+  1
+
+  >>> print form()
+  <html>
+    <head>
+    </head>
+    <body>
+        <h1>Complex form</h1>
+        <div class="form-error">
+            <span> There were errors:</span>
+            <ul>
+              <li> Something is wrong </li>
+            </ul>
+        </div>
+        <div class="subforms">
+          <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
+            <h2>Hello Form</h2>
+            <div class="actions">
+              <div class="action">
+                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
+              </div>
+            </div>
+          </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
+          <h2>Bye Bye Form</h2>
+          <div class="actions">
+            <div class="action">
+              <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
+            </div>
+          </div>
+        </form></div>
+      </div>
+    </body>
+  </html>
+
+We add some errors to the SubForm:
+
+  >>> form = component.getMultiAdapter(
+  ...     (context, request), name='complexform')
+
+  >>> form.subforms[0].errors.append(Error(u'Error in SubForm', identifier=form.subforms[0].prefix))
+  >>> len(form.subforms[0].errors)
+  1
+
+  >>> print form()
+  <html>
+    <head>
+    </head>
+    <body>
+       <h1>Complex form</h1>
+       <div class="subforms">
+       <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
+       <h2>Hello Form</h2>
+       <div class="form-error">
+         <span> There were errors:</span>
+           <ul>
+             <li> Error in SubForm </li>
+           </ul>
+       </div>
+       <div class="actions">
+         <div class="action">
+           <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
+         </div>
+       </div>
+       </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
+       <h2>Bye Bye Form</h2>
+       <div class="actions">
+         <div class="action">
+           <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
+         </div>
+       </div>
+       </form></div>
+      </div>
+    </body>
+  </html>
 """
 
 from zeam.form import composed, base
