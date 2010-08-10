@@ -49,16 +49,16 @@ class ComposedForm(form.Form):
     def __init__(self, context, request):
         super(ComposedForm, self).__init__(context, request)
         # retrieve subforms by adaptation
-        subforms = map(lambda x: x[1], component.getAdapters(
+        subforms = map(lambda f: f[1], component.getAdapters(
                 (self.context, self,  self.request), interfaces.ISubForm))
-        # filter out unavailables ones
-        subforms = filter(lambda x: x.available(), subforms)
         # sort them
-        self.subforms = sort_components(subforms)
+        self.allSubforms = sort_components(subforms)
+        # filter out unavailables ones
+        self.subforms = filter(lambda f: f.available(), self.allSubforms)
 
     def update(self):
         # Call update for all forms
-        for subform in self.subforms:
+        for subform in self.allSubforms:
             subform.update()
 
     def updateForm(self):
@@ -67,6 +67,8 @@ class ComposedForm(form.Form):
             subform.updateActions()
         # Run our actions
         self.updateActions()
+        # The result of the actions might have changed the available subforms
+        self.subforms = filter(lambda f: f.available(), self.allSubforms)
         # Set widgets for all forms
         for subform in self.subforms:
             subform.updateWidgets()
