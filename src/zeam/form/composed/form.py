@@ -27,6 +27,12 @@ class SubFormBase(object):
     def available(self):
         return True
 
+    def htmlId(self):
+        return self.prefix.replace('.', '-')
+
+    def getComposedForm(self):
+        return self.parent.getComposedForm()
+
 
 class SubFormGroupBase(object):
     """A group of subforms: they can be grouped inside a composed form.
@@ -41,6 +47,18 @@ class SubFormGroupBase(object):
         self.allSubforms = sort_components(subforms)
         # filter out unavailables ones
         self.subforms = filter(lambda f: f.available(), self.allSubforms)
+
+    def getSubForm(self, identifier):
+        for form in self.subforms:
+            if form.htmlId() == identifier:
+                return form
+        return None
+
+    def getComposedForm(self):
+        return self
+
+    def htmlId(self):
+        return self.prefix.replace('.', '-')
 
     def update(self):
         # Call update for all forms
