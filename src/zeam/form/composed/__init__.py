@@ -1,6 +1,6 @@
 
 from zeam.form.base import *
-from zeam.form.composed.form import ComposedForm, SubForm
+from zeam.form.composed.form import ComposedForm, SubForm, SubFormGroup
 
 from grokcore.viewlet import view, order
 

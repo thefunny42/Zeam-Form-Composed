@@ -22,11 +22,14 @@ class ISimpleSubForm(ISubForm, ISimpleFormCanvas):
     """
 
 
-class IComposedForm(IForm):
-    """A form which is composed of other forms.
-    """
+class ISubFormGroup(interface.Interface):
 
     subforms = interface.Attribute("List of subforms")
+
+
+class IComposedForm(ISubFormGroup, IForm):
+    """A form which is composed of other forms.
+    """
 
 
 class IZeamFormComposedAPI(IZeamFormBaseAPI):
@@ -37,9 +40,10 @@ class IZeamFormComposedAPI(IZeamFormBaseAPI):
         u"A form which can be compose of other forms")
     SubForm = interface.Attribute(
         u"A form included in a ComposedForm")
+    SubFormGroup = interface.Attribute(
+        u"A group of subforms that behave like one subform")
 
     view = interface.Attribute(
         u"Directive to select which ComposedForm a SubForm belongs to")
     order = interface.Attribute(
         u"Directive used to order SubForms between themselves")
-

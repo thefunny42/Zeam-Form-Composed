@@ -11,6 +11,19 @@ from zeam.form.composed.interfaces import ISubForm
 from zeam.form.composed.form import SubFormBase
 
 
+def set_form_prefix(subform, form, name):
+    """Recursively set the form prefix (to be compatible with groups)
+    """
+    if not subform.prefix:
+        if not form.prefix:
+            set_form_prefix(
+                form,
+                grokcore.viewlet.view.bind().get(form),
+                grokcore.view.name.bind(
+                    get_default=default_view_name).get(form))
+        subform.prefix = '%s.%s' % (form.prefix, name)
+
+
 class SubFormGrokker(martian.ClassGrokker):
     """Grokker to register sub forms.
     """
@@ -26,8 +39,7 @@ class SubFormGrokker(martian.ClassGrokker):
             name, factory, module_info, **kw)
 
     def execute(self, factory, config, context, layer, view, name, **kw):
-        if not factory.prefix:
-            factory.prefix = '%s.%s' % (view.prefix, name)
+        set_form_prefix(factory, view, name)
 
         adapts = (context, view, layer)
         config.action(

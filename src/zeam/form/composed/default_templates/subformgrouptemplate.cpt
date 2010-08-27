@@ -1,0 +1,12 @@
+<div class="subform-group">
+  <h2 tal:content="view.label"
+      tal:condition="view.label">Label</h2>
+  <p tal:condition="view.description"
+     tal:content="view.description">Description</p>
+
+  <div class="subform"
+       tal:repeat="subform view.subforms"
+       tal:content="structure subform.render()">
+    Subform
+  </div>
+</div>
