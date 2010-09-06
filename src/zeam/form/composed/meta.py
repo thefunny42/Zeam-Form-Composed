@@ -14,7 +14,8 @@ from zeam.form.composed.form import SubFormBase
 def set_form_prefix(subform, form, name):
     """Recursively set the form prefix (to be compatible with groups)
     """
-    if not subform.prefix:
+    # We use __dict__.get not to look if prefix was set in a parent class.
+    if not subform.__dict__.get('prefix'):
         if not form.prefix:
             set_form_prefix(
                 form,
