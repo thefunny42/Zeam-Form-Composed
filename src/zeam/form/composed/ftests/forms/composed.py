@@ -66,7 +66,6 @@ We add some errors to the form:
   ...     (context, request), name='complexform')
 
   >>> form.formErrors
-   
 
   >>> form.errors.append(Error(u'Something is wrong', identifier=form.prefix))
   >>> len(form.formErrors)
@@ -79,7 +78,6 @@ We add some errors to the form:
     <body>
         <h1>Complex form</h1>
         <div class="form-error">
-            <span> There were errors:</span>
             <ul>
               <li> Something is wrong </li>
             </ul>
@@ -123,7 +121,6 @@ We add some errors to the SubForm:
        <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
        <h2>Hello Form</h2>
        <div class="form-error">
-         <span> There were errors:</span>
            <ul>
              <li> Error in SubForm </li>
            </ul>
