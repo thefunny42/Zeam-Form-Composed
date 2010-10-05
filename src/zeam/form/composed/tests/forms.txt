@@ -7,11 +7,11 @@ Composed Form
 This package let you compose more than one form inside an another form.
 
    >>> from zeam.form.composed import ComposedForm
+   >>> from zope.publisher.browser import TestRequest
 
    >>> class MyComplexForm(ComposedForm):
    ...    label = u"Complex form"
 
-   >>> from zope.publisher.browser import TestRequest
    >>> request = TestRequest()
    >>> form = MyComplexForm(object(), request)
    >>> form
@@ -19,13 +19,13 @@ This package let you compose more than one form inside an another form.
 
 And this implement correctly the form API:
 
+   >>> from zeam.form.base.interfaces import IForm
    >>> from zeam.form.composed import interfaces
    >>> from zope.interface.verify import verifyObject
 
    >>> verifyObject(interfaces.IComposedForm, form)
    True
 
-   >>> from zeam.form.base.interfaces import IForm
    >>> interfaces.IComposedForm.extends(IForm)
    True
 
@@ -35,6 +35,7 @@ Sub Form
 A subform goes inside a composed form:
 
    >>> from zeam.form.composed import SubForm
+   >>> from zeam.form.base.interfaces import IFormCanvas
 
    >>> class MySubForm(SubForm):
    ...    label = u"Sub form"
@@ -48,6 +49,5 @@ And like a composed form this reply to the form API:
    >>> verifyObject(interfaces.ISubForm, subform)
    True
 
-   >>> from zeam.form.base.interfaces import IFormCanvas
    >>> interfaces.ISubForm.extends(IFormCanvas)
    True
