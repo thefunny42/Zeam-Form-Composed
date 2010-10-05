@@ -1,5 +1,6 @@
 <form action="." tal:attributes="action request.URL" method="post"
-      enctype="multipart/form-data">
+      enctype="multipart/form-data"
+      i18n:domain="zeam.form.base">
 
   <h2 tal:condition="view.label"
       tal:content="view.label">Label</h2>
@@ -14,9 +15,6 @@
 
   <div class="form-error"
      tal:condition="view.errors">
-      <span i18n:translate="text_errors">
-        There were errors:</span>
-
       <ul tal:condition="view.formErrors"
           tal:repeat="error view.formErrors">
         <li> <span tal:replace="error.title" /> </li>
@@ -32,7 +30,8 @@
         Label
       </label>
       <span class="field-required"
-            tal:condition="widget.required">(required)</span>
+            tal:condition="widget.required"
+            i18n:translate="">(required)</span>
       <br />
       <tal:description tal:condition="widget.description">
         <span class="field-description"

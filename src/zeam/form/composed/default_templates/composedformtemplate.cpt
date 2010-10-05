@@ -10,9 +10,6 @@
 
       <div class="form-error"
          tal:condition="view.errors">
-          <span i18n:translate="text_errors">
-            There were errors:</span>
-
           <ul tal:condition="view.formErrors"
               tal:repeat="error view.formErrors">
             <li> <span tal:replace="error.title" /> </li>
