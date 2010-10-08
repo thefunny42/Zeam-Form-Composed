@@ -13,7 +13,6 @@ tests_require = [
     'zope.testing',
     ]
 
-
 setup(name='zeam.form.composed',
       version=version,
       description="Composed form support for zeam.form",
@@ -35,7 +34,7 @@ setup(name='zeam.form.composed',
       zip_safe=False,
       install_requires=[
         'setuptools',
-        'zeam.form.base',
+        'zeam.form.base >= 1.0',
         'martian',
         'grokcore.component',
         'grokcore.view',
