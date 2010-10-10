@@ -99,6 +99,7 @@ class SubFormGroup(SubFormBase, SubFormGroupBase, form.GrokViewSupport):
     """A group of subforms.
     """
     grok.baseclass()
+    grok.implements(interfaces.ISubForm)
 
     def available(self):
         return len(self.subforms) != 0

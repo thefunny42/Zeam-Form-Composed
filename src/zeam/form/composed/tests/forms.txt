@@ -29,6 +29,7 @@ And this implement correctly the form API:
    >>> interfaces.IComposedForm.extends(IForm)
    True
 
+
 Sub Form
 --------
 
@@ -51,3 +52,20 @@ And like a composed form this reply to the form API:
 
    >>> interfaces.ISubForm.extends(IFormCanvas)
    True
+
+
+Sub Form Group
+--------------
+
+A group of subforms is a logical ensemble of subforms, that can be
+nested. They behave like a normal subforms but have some extra
+attributes::
+
+   >>> from zeam.form.composed import SubFormGroup
+
+   >>> class MySubFormGroup(SubFormGroup):
+   ...    label = u"Group of sub forms"
+
+   >>> group = MySubFormGroup(object(), request, form)
+   >>> group
+   <MySubFormGroup object at ...>
