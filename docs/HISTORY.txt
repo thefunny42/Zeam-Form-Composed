@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.2 (2010/10/19)
+----------------
+
+* Add the concept of groups : subforms in a composed one can be grouped
+  with them : they act as a composed form to the subform, and a subform
+  to the composed form.
+
+* Update default templates to reflect changes in  ``zeam.form.base``.
+
 1.1 (2010/07/16)
 ----------------
 

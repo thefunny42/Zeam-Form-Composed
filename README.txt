@@ -56,6 +56,8 @@ Classes
 ``ComposedForm``
     This class define a form which able to contain other forms. It
     behave like a ``zeam.form.base`` Form, but does use its fields.
+    A usefull method can give you back a given subform :
+    ``getSubForm(identifier)``.
 
 ``SubForm``
     This class represent a form which is contained inside a
@@ -64,6 +66,15 @@ Classes
 
     - a method ``available()`` which is called before anything else to
       know if the form shoud still be included in the ``ComposedForm``.
+
+    - a method ``getComposedForm()`` that gives you back the composed
+      form in which this form is rendered.
+
+``SubFormGroup``
+    This class let you group ``SubForm`` together. They are rendered within
+    the group template, and prefixed by the group name. Like a ``SubForm``
+    they have an ``available()`` and a ``getComposedForm()`` method. It as
+    well have a ``getSubForm(identifier)`` method.
 
 Directives
 ----------
