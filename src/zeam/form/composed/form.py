@@ -67,6 +67,7 @@ class SubFormGroupBase(object):
 
     def updateActions(self):
         # Set/run actions for all forms
+        action, status = None, None
         for subform in self.subforms:
             action, status = subform.updateActions()
             if action is not None:
