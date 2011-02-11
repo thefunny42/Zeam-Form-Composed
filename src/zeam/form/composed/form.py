@@ -45,8 +45,7 @@ class SubFormGroupBase(object):
                 (self.context, self,  self.request), interfaces.ISubForm))
         # sort them
         self.allSubforms = sort_components(subforms)
-        # filter out unavailables ones
-        self.subforms = filter(lambda f: f.available(), self.allSubforms)
+        self.subforms = self._getAvailableSubForms()
 
     def getSubForm(self, identifier):
         for form in self.subforms:
@@ -68,18 +67,22 @@ class SubFormGroupBase(object):
     def updateActions(self):
         # Set/run actions for all forms
         action, status = None, None
-        for subform in self.subforms:
+        for subform in self._getAvailableSubForms():
             action, status = subform.updateActions()
             if action is not None:
                 break
         # The result of the actions might have changed the available subforms
-        self.subforms = filter(lambda f: f.available(), self.allSubforms)
+        self.subforms = self._getAvailableSubForms()
         return action, status
 
     def updateWidgets(self):
         # Set widgets for all forms
-        for subform in self.subforms:
+        for subform in self._getAvailableSubForms():
             subform.updateWidgets()
+
+    def _getAvailableSubForms(self):
+        # filter out unavailables ones
+        return filter(lambda f: f.available(), self.allSubforms)
 
 
 class SubForm(SubFormBase, form.FormCanvas):
