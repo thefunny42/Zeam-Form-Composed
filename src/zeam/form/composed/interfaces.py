@@ -1,11 +1,12 @@
 
 from zope import interface
+from zope.publisher.interfaces.browser import IBrowserView
 
 from zeam.form.base.interfaces import IForm, IFormCanvas, ISimpleFormCanvas
 from zeam.form.base.interfaces import IZeamFormBaseAPI
 
 
-class ISubForm(IFormCanvas):
+class ISubForm(IFormCanvas, IBrowserView):
     """A form designed to be included in an another form.
     """
 

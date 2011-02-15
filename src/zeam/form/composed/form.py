@@ -14,7 +14,6 @@ class SubFormBase(object):
     """Base class to be applied on a FormCanvas to get a subform.
     """
     grok.baseclass()
-
     # Set prefix to None, so it's changed by the grokker
     label = u''
     description = u''
