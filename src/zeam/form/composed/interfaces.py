@@ -9,7 +9,6 @@ from zeam.form.base.interfaces import IZeamFormBaseAPI
 class ISubForm(IFormCanvas, IBrowserView):
     """A form designed to be included in an another form.
     """
-
     parent = interface.Attribute("Parent form")
 
     def available():
@@ -24,8 +23,14 @@ class ISimpleSubForm(ISubForm, ISimpleFormCanvas):
 
 
 class ISubFormGroup(interface.Interface):
+    """A group of subforms.
+    """
+    subforms = interface.Attribute("List of available subforms")
+    allSubforms = interface.Attribute("List of all subforms")
 
-    subforms = interface.Attribute("List of subforms")
+    def getSubForm(identifier):
+        """Return a subform based on its HTML identifier.
+        """
 
 
 class IComposedForm(ISubFormGroup, IForm):
@@ -36,7 +41,6 @@ class IComposedForm(ISubFormGroup, IForm):
 class IZeamFormComposedAPI(IZeamFormBaseAPI):
     """API exported by zeamf.form.composed.
     """
-
     ComposedForm = interface.Attribute(
         u"A form which can be compose of other forms")
     SubForm = interface.Attribute(

@@ -36,6 +36,7 @@ class SubFormBase(object):
 class SubFormGroupBase(object):
     """A group of subforms: they can be grouped inside a composed form.
     """
+    grok.implements(interfaces.ISubFormGroup)
 
     def __init__(self, context, request):
         super(SubFormGroupBase, self).__init__(context, request)
