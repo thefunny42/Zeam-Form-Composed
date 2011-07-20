@@ -1,22 +1,12 @@
 
-import os.path
-
 import zeam.form.composed
 
-from zope.app.testing.functional import ZCMLLayer, FunctionalTestSetup
+from zope.app.wsgi.testlayer import BrowserLayer
 from zope.configuration.config import ConfigurationMachine
 from grokcore.component import zcml
 
-ftesting_zcml = os.path.join(
-    os.path.dirname(zeam.form.composed.__file__), 'ftesting.zcml')
-FunctionalLayer = ZCMLLayer(
-    ftesting_zcml, __name__, 'FunctionalLayer', allow_teardown=True)
+FunctionalLayer = BrowserLayer(zeam.form.composed)
 
-def setUp(test):
-    FunctionalTestSetup().setUp()
-
-def tearDown(test):
-    FunctionalTestSetup().tearDown()
 
 def grok(module_name):
     config = ConfigurationMachine()

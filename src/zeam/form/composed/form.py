@@ -1,6 +1,6 @@
 
 from megrok import pagetemplate as pt
-from grokcore.viewlet.util import sort_components
+from grokcore.component.util import sort_components
 from grokcore import component as grok
 from zope import component
 

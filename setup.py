@@ -4,13 +4,9 @@ import os
 version = '1.3dev'
 
 tests_require = [
-    'zope.configuration',
-    'zope.app.authentication',
-    'zope.app.testing',
-    'zope.app.zcmlfiles',
-    'zope.securitypolicy',
-    'zope.testbrowser',
+    'zope.app.wsgi',
     'zope.testing',
+    'zeam.form.base [test]',
     ]
 
 setup(name='zeam.form.composed',
@@ -38,7 +34,6 @@ setup(name='zeam.form.composed',
         'martian',
         'grokcore.component',
         'grokcore.view',
-        'grokcore.viewlet',
         'megrok.pagetemplate',
         'megrok.chameleon',
         'zope.component',

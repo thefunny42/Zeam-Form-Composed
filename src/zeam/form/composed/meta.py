@@ -1,5 +1,4 @@
 
-import grokcore.viewlet
 import grokcore.view
 from grokcore.view.meta.views import default_view_name
 import grokcore.component
@@ -19,7 +18,7 @@ def set_form_prefix(subform, form, name):
         if not form.prefix:
             set_form_prefix(
                 form,
-                grokcore.viewlet.view.bind().get(form),
+                grokcore.view.view.bind().get(form),
                 grokcore.view.name.bind(
                     get_default=default_view_name).get(form))
         subform.prefix = '%s.%s' % (form.prefix, name)
@@ -31,7 +30,7 @@ class SubFormGrokker(martian.ClassGrokker):
     martian.component(SubFormBase)
     martian.directive(grokcore.component.context)
     martian.directive(grokcore.view.layer, default=IDefaultBrowserLayer)
-    martian.directive(grokcore.viewlet.view)
+    martian.directive(grokcore.view.view)
     martian.directive(grokcore.view.name, get_default=default_view_name)
 
     def grok(self, name, factory, module_info, **kw):
