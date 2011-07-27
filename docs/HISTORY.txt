@@ -1,10 +1,16 @@
 Changelog
 =========
 
-1.3 (unreleased)
-----------------
+1.2.1 (2011/07/27)
+------------------
 
-* ...
+* Fix a Python bug.
+
+* Refresh the list of available forms for each step, making sure to
+  handle the case where the availability of one form change during the
+  proccessing of the actions or update.
+
+* Subforms implements IBrowserView. Review interfaces.
 
 1.2 (2010/10/19)
 ----------------
