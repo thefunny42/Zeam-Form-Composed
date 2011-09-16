@@ -66,14 +66,14 @@ class SubFormGroupBase(object):
 
     def updateActions(self):
         # Set/run actions for all forms
-        action, status = None, None
+        form, action, status = self, None, None
         for subform in self._getAvailableSubForms():
-            action, status = subform.updateActions()
+            form, action, status = subform.updateActions()
             if action is not None:
                 break
         # The result of the actions might have changed the available subforms
         self.subforms = self._getAvailableSubForms()
-        return action, status
+        return form, action, status
 
     def updateWidgets(self):
         # Set widgets for all forms
@@ -122,7 +122,7 @@ class ComposedForm(SubFormGroupBase, form.Form):
     grok.implements(interfaces.IComposedForm)
 
     def updateForm(self):
-        action, status = SubFormGroupBase.updateActions(self)
+        executed_form, action, status = SubFormGroupBase.updateActions(self)
         if action is None:
             form.Form.updateActions(self)
         SubFormGroupBase.updateWidgets(self)
