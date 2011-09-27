@@ -66,6 +66,7 @@ We add some errors to the form:
   ...     (context, request), name='complexform')
 
   >>> form.formErrors
+  []
 
   >>> form.errors.append(Error(u'Something is wrong', identifier=form.prefix))
   >>> len(form.formErrors)
