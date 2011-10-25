@@ -45,7 +45,7 @@ class SubFormGroupBase(object):
                 (self.context, self,  self.request), interfaces.ISubForm))
         # sort them
         self.allSubforms = sort_components(subforms)
-        self.subforms = self._getAvailableSubForms()
+        self.subforms = []
 
     def getSubForm(self, identifier):
         for form in self.subforms:
@@ -71,13 +71,13 @@ class SubFormGroupBase(object):
             form, action, status = subform.updateActions()
             if action is not None:
                 break
-        # The result of the actions might have changed the available subforms
-        self.subforms = self._getAvailableSubForms()
         return form, action, status
 
     def updateWidgets(self):
+        # Set the subforms to render
+        self.subforms = self._getAvailableSubForms()
         # Set widgets for all forms
-        for subform in self._getAvailableSubForms():
+        for subform in self.subforms:
             subform.updateWidgets()
 
     def _getAvailableSubForms(self):
@@ -106,7 +106,7 @@ class SubFormGroup(SubFormBase, SubFormGroupBase, form.GrokViewSupport):
     grok.implements(interfaces.ISubForm)
 
     def available(self):
-        return len(self.subforms) != 0
+        return len(self._getAvailableSubForms()) != 0
 
 
 class SubFormGroupTemplate(pt.PageTemplate):
