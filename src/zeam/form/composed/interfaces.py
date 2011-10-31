@@ -16,6 +16,10 @@ class ISubForm(IFormCanvas, IBrowserView):
         rendered.
         """
 
+    def getComposedForm():
+        """Return the associated composed form.
+        """
+
 
 class ISimpleSubForm(ISubForm, ISimpleFormCanvas):
     """A simple sub form.

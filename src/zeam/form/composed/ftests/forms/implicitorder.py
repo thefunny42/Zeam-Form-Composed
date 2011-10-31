@@ -19,6 +19,7 @@ We can now lookup our form by the name of its class:
   ...     (context, request), name='form')
   >>> form
   <zeam.form.composed.ftests.forms.implicitorder.Form object at ...>
+  >>> form.updateForm()
 
 Our form have subforms, which are in order D, C, B, and A:
 

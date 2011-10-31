@@ -20,6 +20,7 @@ We can now lookup our form by the name of its class:
     ...     (animals, request), name='zooform')
     >>> form
     <zeam.form.composed.ftests.forms.group.ZooForm object at ...>
+    >>> form.updateForm()
 
 The form should have the two groups as subforms::
 
@@ -82,7 +83,6 @@ information, and we should get an error:
   >>> 'The Grizzly growled !' in browser.contents
   True
 
-  
 """
 
 

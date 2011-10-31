@@ -20,11 +20,19 @@ We can now lookup our form by the name of its class:
   >>> form
   <zeam.form.composed.ftests.forms.composed.ComplexForm object at ...>
 
-Our form have subforms:
+  >>> from zope.interface.verify import verifyObject
+  >>> from zeam.form.composed.interfaces import IComposedForm, ISubForm
+  >>> verifyObject(IComposedForm, form)
+  True
 
+After updated, our form have subforms:
+
+  >>> form.updateForm()
   >>> form.subforms
   [<zeam.form.composed.ftests.forms.composed.Hello object at ...>,
    <zeam.form.composed.ftests.forms.composed.ByeBye object at ...>]
+  >>> map(lambda f: verifyObject(ISubForm, f), form.subforms)
+  [True, True]
 
 Each sub form is prefixed differently with the name of the form:
 
@@ -33,7 +41,7 @@ Each sub form is prefixed differently with the name of the form:
 
 And we can render the form:
 
-  >>> print form()
+  >>> print form.render()
   <html>
     <head>
     </head>
@@ -108,11 +116,12 @@ We add some errors to the SubForm:
   >>> form = component.getMultiAdapter(
   ...     (context, request), name='complexform')
 
+  >>> form.updateForm()
   >>> form.subforms[0].errors.append(Error(u'Error in SubForm', identifier=form.subforms[0].prefix))
   >>> len(form.subforms[0].errors)
   1
 
-  >>> print form()
+  >>> print form.render()
   <html>
     <head>
     </head>
