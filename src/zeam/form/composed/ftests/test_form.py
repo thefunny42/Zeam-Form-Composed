@@ -1,7 +1,7 @@
 
+import doctest
 import unittest
 from pkg_resources import resource_listdir
-from zope.testing import doctest
 from zeam.form.composed.testing import FunctionalLayer
 
 

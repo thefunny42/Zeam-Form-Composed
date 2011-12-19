@@ -41,31 +41,36 @@ Each sub form is prefixed differently with the name of the form:
 
 And we can render the form:
 
-  >>> print form.render()
+  >>> print form.render() #doctest: +NORMALIZE_WHITESPACE
   <html>
     <head>
     </head>
     <body>
         <h1>Complex form</h1>
         <div class="subforms">
-          <div class="subform"><form action="http://127.0.0.1" method="post"  enctype="multipart/form-data">
-            <h2>Hello Form</h2>
-            <div class="actions">
-              <div class="action">
-                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
-              </div>
-            </div>
-          </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
-          <h2>Bye Bye Form</h2>
-          <div class="actions">
-            <div class="action">
-               <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
-            </div>
-          </div>
-        </form></div>
+          <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
+    <h2>Hello Form</h2>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
       </div>
+    </div>
+  </form>
+  </div>
+          <div class="subform"><form action="http://127.0.0.1" method="post"
+        enctype="multipart/form-data">
+    <h2>Bye Bye Form</h2>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
+      </div>
+    </div>
+  </form>
+  </div>
+        </div>
     </body>
   </html>
+
 
 We add some errors to the form:
 
@@ -80,7 +85,7 @@ We add some errors to the form:
   >>> len(form.formErrors)
   1
 
-  >>> print form()
+  >>> print form() #doctest: +NORMALIZE_WHITESPACE
   <html>
     <head>
     </head>
@@ -92,22 +97,27 @@ We add some errors to the form:
             </ul>
         </div>
         <div class="subforms">
-          <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
-            <h2>Hello Form</h2>
-            <div class="actions">
-              <div class="action">
-                <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
-              </div>
-            </div>
-          </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
-          <h2>Bye Bye Form</h2>
-          <div class="actions">
-            <div class="action">
-              <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
-            </div>
-          </div>
-        </form></div>
+          <div class="subform"><form action="http://127.0.0.1" method="post"
+        enctype="multipart/form-data">
+    <h2>Hello Form</h2>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
       </div>
+    </div>
+  </form>
+  </div>
+          <div class="subform"><form action="http://127.0.0.1" method="post"
+        enctype="multipart/form-data">
+    <h2>Bye Bye Form</h2>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
+      </div>
+    </div>
+  </form>
+  </div>
+        </div>
     </body>
   </html>
 
@@ -126,29 +136,34 @@ We add some errors to the SubForm:
     <head>
     </head>
     <body>
-       <h1>Complex form</h1>
-       <div class="subforms">
-       <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
-       <h2>Hello Form</h2>
-       <div class="form-error">
-           <ul>
-             <li> Error in SubForm </li>
-           </ul>
-       </div>
-       <div class="actions">
-         <div class="action">
-           <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
-         </div>
-       </div>
-       </form></div> <div class="subform"><form action="http://127.0.0.1" method="post" enctype="multipart/form-data">
-       <h2>Bye Bye Form</h2>
-       <div class="actions">
-         <div class="action">
-           <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
-         </div>
-       </div>
-       </form></div>
+        <h1>Complex form</h1>
+        <div class="subforms">
+          <div class="subform"><form action="http://127.0.0.1" method="post"
+        enctype="multipart/form-data">
+    <h2>Hello Form</h2>
+    <div class="form-error">
+        <ul>
+          <li> Error in SubForm </li>
+        </ul>
+    </div>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-hello-action-hello" name="form.hello.action.hello" value="Hello" class="action" />
       </div>
+    </div>
+  </form>
+  </div>
+          <div class="subform"><form action="http://127.0.0.1" method="post"
+        enctype="multipart/form-data">
+    <h2>Bye Bye Form</h2>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" id="form-byebye-action-bye-bye" name="form.byebye.action.bye-bye" value="Bye Bye" class="action" />
+      </div>
+    </div>
+  </form>
+  </div>
+        </div>
     </body>
   </html>
 """
