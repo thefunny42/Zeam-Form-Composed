@@ -1,13 +1,12 @@
 
-import grokcore.view
 from grokcore.view.meta.views import default_view_name
 import grokcore.component
+import grokcore.view
 import martian
 
-import zope.component
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from zeam.form.composed.interfaces import ISubForm
 from zeam.form.composed.form import SubFormBase
+from zeam.form.composed.interfaces import ISubForm
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
 def set_form_prefix(subform, form, name):
@@ -44,7 +43,7 @@ class SubFormGrokker(martian.ClassGrokker):
         adapts = (context, view, layer)
         config.action(
             discriminator=('adapter', adapts, ISubForm, name),
-            callable=zope.component.provideAdapter,
+            callable=grokcore.component.util.provideAdapter,
             args=(factory, adapts, ISubForm, name),
             )
         return True
