@@ -6,6 +6,7 @@ from zope import component
 
 from zeam.form.base import form
 from zeam.form.composed import interfaces
+from zope.interface import implementer
 
 pt.templatedir('default_templates')
 
@@ -33,10 +34,10 @@ class SubFormBase(object):
         return self.parent.getComposedForm()
 
 
+@implementer(interfaces.ISubFormGroup)
 class SubFormGroupBase(object):
     """A group of subforms: they can be grouped inside a composed form.
     """
-    grok.implements(interfaces.ISubFormGroup)
 
     def __init__(self, context, request):
         super(SubFormGroupBase, self).__init__(context, request)
@@ -85,12 +86,12 @@ class SubFormGroupBase(object):
         return filter(lambda f: f.available(), self.allSubforms)
 
 
+@implementer(interfaces.ISimpleSubForm)
 class SubForm(SubFormBase, form.FormCanvas):
     """Form designed to be included in an another form (a
     ComposedForm).
     """
     grok.baseclass()
-    grok.implements(interfaces.ISimpleSubForm)
 
 
 class SubFormTemplate(pt.PageTemplate):
@@ -99,11 +100,11 @@ class SubFormTemplate(pt.PageTemplate):
     pt.view(SubForm)
 
 
+@implementer(interfaces.ISubFormGroup)
 class SubFormGroup(SubFormBase, SubFormGroupBase, form.GrokViewSupport):
     """A group of subforms.
     """
     grok.baseclass()
-    grok.implements(interfaces.ISubForm)
 
     def available(self):
         return len(self._getAvailableSubForms()) != 0
@@ -115,11 +116,11 @@ class SubFormGroupTemplate(pt.PageTemplate):
     pt.view(SubFormGroup)
 
 
+@implementer(interfaces.IComposedForm)
 class ComposedForm(SubFormGroupBase, form.Form):
     """A form which is composed of other forms (SubForm).
     """
     grok.baseclass()
-    grok.implements(interfaces.IComposedForm)
 
     def updateForm(self):
         executed_form, action, status = SubFormGroupBase.updateActions(self)

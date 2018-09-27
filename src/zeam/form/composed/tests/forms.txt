@@ -7,6 +7,7 @@ Composed Form
 This package let you compose more than one form inside an another form.
 
    >>> from zeam.form.composed import ComposedForm
+   >>> from zeam.form.composed import interfaces
    >>> from zope.publisher.browser import TestRequest
 
    >>> class MyComplexForm(ComposedForm):
@@ -20,7 +21,6 @@ This package let you compose more than one form inside an another form.
 And this implement correctly the form API:
 
    >>> from zeam.form.base.interfaces import IForm
-   >>> from zeam.form.composed import interfaces
    >>> from zope.interface.verify import verifyObject
 
    >>> verifyObject(interfaces.IComposedForm, form)
