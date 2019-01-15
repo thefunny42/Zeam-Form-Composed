@@ -63,7 +63,7 @@ Integration tests
   >>> root = getRootFolder()
   >>> root['animals'] = animals
 
-  >>> from zope.app.wsgi.testlayer import Browser
+  >>> from zope.testbrowser.wsgi import Browser
   >>> browser = Browser()
   >>> browser.handleErrors = False
 
